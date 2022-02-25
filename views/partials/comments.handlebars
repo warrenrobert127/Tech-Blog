@@ -1,6 +1,15 @@
-<section class="card">
-  <a href="/gallery/{{id}}">
-    <header>{{name}}</header>
-    <img src="/images/{{paintings.[0].filename}}" alt="{{paintings.[0].description}}">
-  </a>
-</section>
+<div class="comments box mx-5 column">
+  <h2 class="title is-4">Comments</h2>
+  {{#each this}}
+    <section class="comment my-5">
+      <div class="text">
+        {{comment_text}}
+      </div>
+      <div class="meta title is-6 is-primary">
+        {{user.username}}
+        on
+        {{format_date date_created}}
+      </div>
+    </section>
+  {{/each}}
+</div>
