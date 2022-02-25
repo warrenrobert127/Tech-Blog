@@ -1,22 +1,31 @@
-<h1>Welcome {{user}}</h1>
-{{#each post}}
-<section class="painting">
-  <div class="painting-details">
-    <h3>{{BlogPost.title}}</h3>
-    <p>By: {{BlogPost.body}}</p>
-    <p>Exhibition open until: {{ format_date painting.exhibition_date}}</p>
-  </div>
+<section class="box">
+    <h2 class="title is-4 mx-6">Create New Post</h2>
+
+    <form class="new-post-form column is-full mx-3">
+        <div class="my-3">
+            <label for="post-title" class="label">Title</label>
+            <input type="text" id="post-title" name="post-title" class="input" placeholder="Please enter title"/>
+        </div>
+        <div>
+            <label for="post-content" class="label">Content</label>
+            <input id="post-content" name="post-content" class="input" placeholder="Please enter description"/>
+        </div>
+        <button type="submit" class="btn button is-primary my-3">Create</button>
+    </form>
 </section>
-{{/each}}
-<form>
-  <div class="mb-3">
-    <label for="title" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="title" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="body" class="form-label">Password</label>
-    <input type="body" class="form-control" id="body">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+
+{{#if posts.length}}
+<section class="mx-5">
+    <h2 class="title is-4 mx-5">Your Posts</h2>
+    <ul>
+        {{#each posts as |post|}}
+        <li class="mx-3 my-5">
+            {{> post-info post}}
+            <a href="/dashboard/edit/{{post.id}}" class="edit-link button is-link is-light mx-5">Edit post</a>
+        </li>
+        {{/each}}
+    </ul>
+</section>
+{{/if}}
+
+<script src="/javascript/add-post.js"></script>

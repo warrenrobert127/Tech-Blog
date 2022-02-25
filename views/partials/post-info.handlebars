@@ -1,0 +1,15 @@
+<article class="post mx-5 column is-full box">
+  <a href="/post/{{id}}" class="column title is-full">{{title}}</a>
+  <div class="columns mx-0">
+    <span class="column">{{post_content}}</span>
+  </div>
+  <div class="meta">
+    By
+    {{user.username}}
+    on
+    {{format_date date_created}}
+    |
+    <a href="/post/{{id}}">{{comments.length}}
+      {{format_plural "comment" comments.length}}</a>
+  </div>
+</article>
