@@ -3,20 +3,20 @@ const { Painting } = require('../models');
 const paintingdata = [
   {
     title: "Invention of the wheel",
-    post_content: "Who woulda thought of that? Certainly not me, good sir.",
+    post_content: "Who woulda thought of that Larry David invented it?",
   },
   {
     title: "Will we ever have flying machines?",
     post_content:
-      "People keep calling me crazy, but I think it just goes over their heads.",
+      "Who are the wright bros?",
   },
   {
-    title: "I created fire!",
+    title: "I created fire outside!",
     post_content: "Look! Fire! So hot.",
   },
   {
     title: "Boats",
-    post_content: "What are they?",
+    post_content: "I'm on one!",
   },
 ]; 
 

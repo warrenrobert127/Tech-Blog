@@ -3,23 +3,23 @@
 
 [
   {
-    username: "kanellakise",
-    email: "elijahkanellakis@gmail.com",
+    username: "warrenrobert127",
+    email: "warrenrobert127@gmail.com",
     password: "password123",
   },
   {
-    username: "thomask",
-    email: "tom@thebomb.com",
+    username: "martinJ",
+    email: "martin@mantha.com",
+    password: "password",
+  },
+  {
+    username: "steph",
+    email: "worldy1@gmail.com",
     password: "password123",
   },
   {
-    username: "kimic",
-    email: "kimi@kittiewind.com",
-    password: "password123",
-  },
-  {
-    username: "loulou",
-    email: "lou@lou.com",
+    username: "Buster12",
+    email: "bustabust@gmail.com",
     password: "password123",
   },
 ]; 

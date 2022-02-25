@@ -3,10 +3,10 @@
 const gallerydata = [
   {
     comment_text:
-      "Yeah, you're off your rocker. Rocker? I have an idea for a chair!",
+      "Yeah, you're off your rocker. BuB? Grab me a beer!",
   },
   {
-    comment_text: "Fire? You living under a rock?",
+    comment_text: "You are Fired? You living under a rock?",
   },
 ]; 
 
