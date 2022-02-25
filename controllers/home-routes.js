@@ -1,74 +1,104 @@
 const router = require('express').Router();
-const { BlogPost, Comment, User } = require('../models');
+const { Post, Comment, User } = require('../models');
 // TODO: Import the custom middleware
 const sequelize = require('../config/connection');
 
-// GET all galleries for homepage
-router.get('/', async (req, res) => {
-  res.render("homepage")
-  
-});
-
-// GET one gallery
-// TODO: Replace the logic below with the custom middleware
-router.get('/dashboard', async (req, res) => {
-  // If the user is not logged in, redirect the user to the login page
-  if (!req.session.loggedIn) {
-    res.redirect('/login');
-  } else {
-    // If the user is logged in, allow them to view the gallery
-    try {
-      const user = req.session.email;
-      const dbData = await User.findOne({where:{email: user }}, {
-        include: [
-          {
-            model: BlogPost,
-            attributes: [
-              'id',
-              'title',
-              'body',
-            ],
-          },
+// get all posts for homepage
+router.get('/', (req, res) => {
+    console.log('======================');
+    Post.findAll({
+        attributes: [
+            'id',
+            'post_content',
+            'title',
+            'date_created',
         ],
-      });
-      const post  = dbData.get({ plain: true });
-      res.render('dashboard', { post, loggedIn: req.session.loggedIn,user:req.session.username });
-    } catch (err) {
-      console.log(err);
-      res.render('login');
-     // res.status(500).json(err);
-    }
-  }
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'date_created'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            }
+        ]
+    })
+        .then(dbPostData => {
+            const posts = dbPostData.map(post => post.get({ plain: true }));
+
+            res.json(dbPostData)
+
+            // res.render('homepage', {
+            //     posts,
+            //     loggedIn: req.session.loggedIn
+            // });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
-// GET one painting
-// TODO: Replace the logic below with the custom middleware
-router.get('/painting/:id', async (req, res) => {
-  // If the user is not logged in, redirect the user to the login page
-  if (!req.session.loggedIn) {
-    res.redirect('/login');
-  } else {
-    // If the user is logged in, allow them to view the painting
-    try {
-      const dbPaintingData = await Painting.findByPk(req.params.id);
+// get single post
+router.get('/post/:id', (req, res) => {
+    Post.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: [
+            'id',
+            'post_content',
+            'title',
+            'date_created'
+        ],
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'date_created'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            }
+        ]
+    })
+        .then(dbPostData => {
+            if (!dbPostData) {
+                res.status(404).json({ message: 'No post found with this id' });
+                return;
+            }
 
-      const painting = dbPaintingData.get({ plain: true });
+            const post = dbPostData.get({ plain: true });
 
-      res.render('painting', { painting, loggedIn: req.session.loggedIn });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  }
+            res.json(dbPostData)
+
+            // res.render('single-post', {
+            //     post,
+            //     loggedIn: req.session.loggedIn
+            // });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/dashboard');
-    return;
-  }
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
 
-  res.render('login');
+    res.render('login');
 });
 
 module.exports = router;
