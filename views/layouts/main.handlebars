@@ -1,62 +1,53 @@
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ye Olde Tech Blog</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Blog</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
 
-  <body class="has-navbar-fixed-top">
-    <div class="wrapper">
-      <header>
-        <h1 class="title is-1 mx-5 my-5">
-          <a href="/">Ye Olde Tech Blog</a>
-        </h1>
-        <nav class="navbar is-fixed-top">
-          <div class="navbar-menu my-3">
-            {{#if loggedIn}}
-              <div class="navbar-start">
-                <a href="/" class="navbar-item mx-3">Homepage</a>
-                <a href="/dashboard" class="navbar-item">Dashboard</a>
-              </div>
-              <div class="navbar-end">
-                <button
-                  id="logout"
-                  class="navbar-item button mx-3"
-                >Logout</button>
-              </div>
-            {{else}}
-              <div class="navbar-start">
-                <a href="/" class="navbar-item mx-3">Homepage</a>
-                <a href="/login" class="navbar-item">Dashboard</a>
-              </div>
-              <div class="navbar-end">
-                <a href="/login" class="navbar-item button is-primary">Sign Up</a>
-                <a
-                  href="/login"
-                  class="navbar-item button mx-3 is-link is-outlined"
-                >Login</a>
-              </div>
-            {{/if}}
+<body class="has-navbar-fixed-top">
+  <div class="wrapper">
+    <header>
+      <h1 class="title is-1 mx-5 my-5">
+        <a href="/">Ye Olde Tech Blog</a>
+      </h1>
+      <nav class="navbar is-fixed-top">
+        <div class="navbar-menu my-3">
+          {{#if loggedIn}}
+          <div class="navbar-start">
+            <a href="/" class="navbar-item mx-3">Homepage</a>
+            <a href="/dashboard" class="navbar-item">Dashboard</a>
           </div>
-        </nav>
-      </header>
-      <main class="columns is-multiline">
-        {{{body}}}
-      </main>
-      <footer>
-        The tech blog for those suspended in time!
-      </footer>
-    </div>
+          <div class="navbar-end">
+            <button id="logout" class="navbar-item button mx-3">Logout</button>
+          </div>
+          {{else}}
+          <div class="navbar-start">
+            <a href="/" class="navbar-item mx-3">Homepage</a>
+            <a href="/login" class="navbar-item">Dashboard</a>
+          </div>
+          <div class="navbar-end">
+            <a href="/login" class="navbar-item button is-primary">Sign Up</a>
+            <a href="/login" class="navbar-item button mx-3 is-link is-outlined">Login</a>
+          </div>
+          {{/if}}
+        </div>
+      </nav>
+    </header>
+    <main class="columns is-multiline">
+      {{{body}}}
+    </main>
+    <footer>
+      The tech blog for those suspended in time!
+    </footer>
+  </div>
 
-    {{#if loggedIn}}
-      <script src="/javascript/logout.js"></script>
-    {{/if}}
-  </body>
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
+</body>
 
 </html>
