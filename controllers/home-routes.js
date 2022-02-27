@@ -130,6 +130,27 @@ router.get("/dashboard", withAuth, (req, res) => {
     });
 });
 
+router.get("/dashboard/edit/:id", withAuth, (req, res) => {
+  Post.findByPk(req.params.id, {
+    attributes: ["id", "post_content", "title", "date_created"],
+  })
+    .then((dbPostData) => {
+      if (dbPostData) {
+        const post = dbPostData.get({ plain: true });
+
+        res.render("edit-post", {
+          post,
+          loggedIn: true,
+        });
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
