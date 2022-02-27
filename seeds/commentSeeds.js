@@ -6,7 +6,7 @@ const gallerydata = [
       "Yeah, you're off your rocker. BuB? Grab me a beer!",
   },
   {
-    comment_text: "You are Fired? You living under a rock?",
+    comment_text: "You are Fired? You because you are living under a rock.",
   },
 ]; 
 
