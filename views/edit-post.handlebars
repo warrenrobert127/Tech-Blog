@@ -1,5 +1,5 @@
 <article class="box column is-half mx-5 my-3">
-  <a href="/dashboard" class="button is-link"> &larr; Back to dashboard</a>
+  <a href="/dashboard" class="button is-link"> &larr; Back to my dashboard</a>
   <h2 class="title is-4 my-3">
     Edit Post
   </h2>
@@ -7,29 +7,16 @@
     <div>
       <div>
         <label for="post-title" class="label">Title</label>
-        <input
-          name="post-title"
-          type="text"
-          value="{{post.title}}"
-          class="input"
-        />
+        <input name="post-title" type="text" value="{{post.title}}" class="input" />
       </div>
       <div>
         <label for="post-content" class="label">Content</label>
-        <input
-          name="post_content"
-          type="text"
-          value="{{post.post_content}}"
-          class="input"
-        />
+        <input name="post_content" type="text" value="{{post.post_content}}" class="input" />
       </div>
     </div>
     <div class="my-3">
       <button type="submit" class="button is-primary is-light mx-3">Save post</button>
-      <button
-        type="button"
-        class="delete-post-btn button is-danger is-light"
-      >Delete post</button>
+      <button type="button" class="delete-post-btn button is-danger is-light">Delete post</button>
     </div>
   </form>
 </article>
