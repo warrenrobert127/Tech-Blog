@@ -23,6 +23,9 @@ Robert Warren
 
 [GitHub Link](https://github.com/warrenrobert127/Tech-Blog)
 
-https://warrenrobert127.github.io/Tech-Blog/
+[Deployed Heroku App](https://git.heroku.com/powerful-chamber-13338.git)
+[Deployed Link](https://warrenrobert127.github.io/Tech-Blog/)
 
 ## Features
+
+The project id coded with html and Javascript, there are also npm packages express.js and handlebars. The app also uses bcrypt and mysql database
